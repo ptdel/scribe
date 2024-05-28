@@ -1,19 +1,10 @@
 # knowledge/scribe
 
-```none
-██████╗ ██████╗  █████╗  ██████╗████████╗██╗ ██████╗ █████╗ ██╗     ██╗     ██╗
-██╔══██╗██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██║██╔════╝██╔══██╗██║     ██║     ██║
-██████╔╝██████╔╝███████║██║        ██║   ██║██║     ███████║██║     ██║     ██║
-██╔═══╝ ██╔══██╗██╔══██║██║        ██║   ██║██║     ██╔══██║██║     ██║     ██║
-██║     ██║  ██║██║  ██║╚██████╗   ██║   ██║╚██████╗██║  ██║███████╗███████╗██║
-╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝
-```
+Scribe provides intelligent oversight (and insights) to company communications.
 
 ## Project Status
 
-TODO: add status badges for <https://github.com/Patrick/{{scm/repo>}} workflows and issues
-
-TODO: Provide a meaningful description of the project
+Scribe is in early Alpha
 
 Project created with [deps-new](https://github.com/seancorfield/deps-new) and the [practicalli/application template](https://github.com/practicalli/project-templates)
 
@@ -23,12 +14,6 @@ Run the service (clojure.main)
 
 ```shell
 clojure -M:run/app
-```
-
-Run the greet function (clojure.exec), optionally passing a `:name` key and value as arguments
-
-```shell
-clojure -X:run/greet :team-name '"team name"'
 ```
 
 ## Development
@@ -48,7 +33,6 @@ This project uses `make` tasks to run the Clojure tests, kaocha test runner and 
 ```shell
 make
 ```
-
 
 ### Run Clojure REPL
 
