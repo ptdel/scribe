@@ -1,0 +1,62 @@
+{:paths
+ ["src" "resources"]
+
+ :deps
+ {;; Application
+  org.clojure/clojure                {:mvn/version "1.11.1"}
+  aleph/aleph                        {:mvn/version "0.7.1"}
+  babashka/fs                        {:mvn/version "0.5.20"}
+  com.cognitect.aws/api              {:mvn/version "0.8.692"}
+  com.cognitect.aws/endpoints        {:mvn/version "1.1.12.682"}
+  com.cognitect.aws/s3               {:mvn/version "868.2.1580.0"}
+  com.cognitect.aws/s3control        {:mvn/version "857.2.1574.0"}
+  com.brunobonacci/mulog             {:mvn/version "0.9.0"}
+  com.brunobonacci/mulog-adv-console {:mvn/version "0.9.0"}
+  com.github.seancorfield/honeysql   {:mvn/version "2.6.1126"}
+  integrant/integrant                {:mvn/version "0.9.0-alpha4"}
+  integrant/repl                     {:mvn/version "0.3.3"}
+  metosin/muuntaja                   {:mvn/version "0.6.10"}
+  metosin/reitit                     {:mvn/version "0.7.0-alpha7"}
+  metosin/reitit-dev                 {:mvn/version "0.7.0-alpha7"}
+  metosin/reitit-core                {:mvn/version "0.7.0-alpha7"}
+  metosin/reitit-middleware          {:mvn/version "0.7.0-alpha7"}
+  metosin/reitit-ring                {:mvn/version "0.7.0-alpha7"}
+  metosin/reitit-swagger             {:mvn/version "0.7.0-alpha7"}
+  metosin/reitit-swagger-ui          {:mvn/version "0.7.0-alpha7"}
+  nilenso/honeysql-postgres          {:mvn/version "0.4.112"}
+  org.babashka/cli                   {:mvn/version "0.8.58"}
+  org.postgresql/postgresql          {:mvn/version "42.7.3"}
+  seancorfield/next.jdbc             {:mvn/version "1.2.659"}
+  ;; reitit-middleware implicitly depends on this...
+  javax.servlet/javax.servlet-api    {:mvn/version "3.1.0"}}
+
+ :aliases
+ {;; Clojure.main execution of application
+  :run/app
+  {:main-opts ["-m" "knowledge.scribe"]}
+
+  ;; Add libraries and paths to support additional test tools
+  :test/env
+  {}
+
+  :codox {:extra-deps {codox/codox {:mvn/version "0.10.8"}}
+          :metadata   {:doc/format :markdown}
+          :exec-fn    codox.main/generate-docs
+          :exec-args  {:source-paths ["src"]}}
+
+  ;; Test runner - local and CI
+  ;; call with :watch? true to start file watcher and re-run tests on saved changes
+  :test/run
+  {:extra-paths ["test"]
+   :extra-deps  {lambdaisland/kaocha {:mvn/version "1.87.1366"}}
+   :main-opts   ["-m" "kaocha.runner"]
+   :exec-fn     kaocha.runner/exec-fn
+   :exec-args   {:randomize? false
+                 :fail-fast? true}}
+
+  ;; tools.build `build.clj` built script
+  :build
+  {:replace-paths ["."]
+   :replace-deps  {io.github.clojure/tools.build
+                   {:git/tag "v0.9.4" :git/sha "76b78fe"}}
+   :ns-default    build}}}
