@@ -4,8 +4,9 @@
    [knowledge.database :as db]))
 
 (defn meeting-upload-handler [request]
-  (let [file (-> request :parameters :multipart :file)]
-    (s3/put-object "meeting-test" (:filename file) (:tempfile file))
+  (let [file (-> request :parameters :multipart :file)
+        bucket (-> request :parameters :query :bucket)]
+    (s3/put-object bucket (:filename file) (:tempfile file))
     {:status 200
      :body   {:name (:filename file)
               :size (:size file)}}))
